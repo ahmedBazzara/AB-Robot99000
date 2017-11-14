@@ -11,15 +11,24 @@
   <div>
     <h1>{{message}}</h1>
   </div>
-  <form name="move" ng-submit="checkCase(directions)">
-      <input type="search" required placeholder="directions to cut" ng-model="directions" />
-      <input type="submit" value="Search">
-  </form>
   <form name="matrix" ng-submit="createMatrix(rows,cols,'0')">
     <input type="create" required placeholder="Rows" ng-model="rows" />
     <input type="create" required placeholder="Cols" ng-model="cols" />    
     <input type="submit" value="create">
 </form>
+<br>
+<form name="setStartPoint" ng-submit="setPointer(row,col,'N')">
+  <input type="Rowpoint" required placeholder="row point Ys" ng-model="row" />
+  <input type="Colpoint" required placeholder="Col point Xx" ng-model="col" />    
+  <input type="submit" value="Search">
+</form>
+<br>
+  <form name="move" ng-submit="checkCase(directions)">
+      <input type="search" required placeholder="directions to cut" ng-model="directions" />
+      <input type="submit" value="Search">
+  </form>
+  
+  
 </body>
 
 </html>
