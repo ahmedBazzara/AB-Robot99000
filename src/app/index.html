@@ -15,7 +15,11 @@
       <input type="search" required placeholder="directions to cut" ng-model="directions" />
       <input type="submit" value="Search">
   </form>
-  
+  <form name="matrix" ng-submit="createMatrix(rows,cols,'0')">
+    <input type="create" required placeholder="Rows" ng-model="rows" />
+    <input type="create" required placeholder="Cols" ng-model="cols" />    
+    <input type="submit" value="create">
+</form>
 </body>
 
 </html>
