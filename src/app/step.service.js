@@ -1,51 +1,73 @@
 (function () {
-
+ /* service to move the pointer/robot towards the wished direction by checking if the robot will be in 
+ the matrix border after the movment or not */
     var step = function () {
-
-        var forward = function ( currRow, currCol,currDir,array) {
+        var forward = function (currRow, currCol, currDir, array) {
             var newRow;
             var newCol;
-            var newPointers =[];
+            var newPointers = [];
+            var errMsg = document.getElementById("error");
+            errMsg.innerHTML = "";
             switch (currDir) {
-                case "N":
-                    if (currRow > 0) {
-                        newRow = currRow - 1;
-                        newPointers=[newRow, currCol, currDir];
-                        return newPointers;
+                case "S":
+                    try {
+                        if (+currRow == 0) throw "Can't go more North!";
+                        newRow = +currRow - 1;
+                        errMsg.innerHTML = "";                        
+                        return newPointers = [+newRow, +currCol, currDir];
+
                     }
-                    else if (currRow == 0) {
-                        console.log("cant go more up !");
+                    catch (err) {
+                        errMsg.innerHTML = err;
+                        return newPointers = [+currRow, +currCol, currDir];
+
                     }
                     break;
+                case "N":
+                    try {
+                        if (+currRow == array.length - 1) throw "Can't go more South!";
+                        newRow = +currRow + 1;
+                        errMsg.innerHTML = "";                        
+                        
+                        return newPointers = [+newRow, +currCol, currDir];
 
-                case "S":
-                    if (currRow < array.length - 1) {
-                        newRow = currRow + 1;
-                        newPointers=[newRow, currCol, currDir];
-                        return newPointers ;
                     }
-                    else if (currRow == array.length - 1) {
-                        console.log("cant go more down !");
+                    catch (err) {
+                        errMsg.innerHTML = err;
+                        
+                        return newPointers = [+currRow, +currCol, currDir];
+
                     }
                     break;
                 case "E":
-                    if (currCol < array[1].length - 1) {
-                        newCol = currCol + 1;
-                        newPointers=[currRow, newCol, currDir];
-                        return newPointers ;
+
+                    try {
+                        if (currCol == array[0].length - 1) throw "Can't go more East!";
+                        newCol = +currCol + 1;
+                        errMsg.innerHTML = "";                        
+                        
+                        return newPointers = [+currRow, +newCol, currDir];
+
                     }
-                    else if (currCol == array[i].length - 1) {
-                        console.log("cant go more East !");
+                    catch (err) {
+                        errMsg.innerHTML = err;
+                        return newPointers = [+currRow, +currCol, currDir];
+
                     }
                     break;
                 case "W":
-                    if (currCol > 0) {
-                        newCol = currCol - 1;
-                        newPointers=[currRow, newCol, currDir];
-                        return newPointers ;
+                    try {
+                        if (currCol == 0) throw "Can't go more West!";
+                        newCol = +currCol - 1;
+                        errMsg.innerHTML = "";                        
+                        
+                        return newPointers = [+currRow, +newCol, currDir];
+
                     }
-                    else if (currCol == 0) {
-                        console.log("cant go more West !");
+                    catch (err) {
+                        errMsg.innerHTML = err;
+                        return newPointers = [+currRow, +currCol, currDir];
+
                     }
                     break;
             }

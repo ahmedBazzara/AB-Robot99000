@@ -1,5 +1,6 @@
 (function () {
-
+/* service to rotate the pointer/robot right or left by checking its current direction (from the direction service)
+ and which way to rotate then compare them with the direction table */
     var rotate = function () {
         var directionTable = [
             { name: "N", value: 0 },

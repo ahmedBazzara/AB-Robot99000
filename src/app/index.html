@@ -7,8 +7,8 @@
   <script src="rotate.service.js"></script>
   <script src="location.service.js"></script>
   <script src="step.service.js"></script>
-  
-  
+
+
 </head>
 
 <body ng-controller="MainController">
@@ -20,22 +20,26 @@
   </div>
 
   <form name="matrix" ng-submit="createMatrix(rows,cols,'0')">
-    <input type="create" required placeholder="Rows" ng-model="rows" />
-    <input type="create" required placeholder="Cols" ng-model="cols" />
+    <input type="create" required pattern="^[0-9]+$" placeholder="Rows" ng-model="rows" />
+    <input type="create" required pattern="^[0-9]+$" placeholder="Cols" ng-model="cols" />
     <input type="submit" value="Creat Matrix">
   </form>
   <br>
   <form ng-hide="!my2Darray" name="setStartPoint" ng-submit="setPointer(row,col,'N')">
-    <input type="Rowpoint" required placeholder="row point Ys" ng-model="row" />
-    <input type="Colpoint" required placeholder="Col point Xx" ng-model="col" />
+    <input type="Colpoint" required pattern="^[0-9]+$" placeholder="Col point Xx" ng-model="col" />
+
+    <input type="Rowpoint" required pattern="^[0-9]+$" placeholder="row point Ys" ng-model="row" />
     <input type="submit" value="Set your start point">
   </form>
   <h6 ng-show="currRow ||currCol||currDir">
-    {{currRow}} {{currCol}} {{currDir}}</h6>
+    {{currCol}} {{currRow}} {{currDir}}</h6>
   <br>
-  <form ng-hide="!currCol" name="move" ng-submit="checkCase(directions)">
-    <input type="search" required placeholder="directions to cut" ng-model="directions" />
-    <input type="submit" value="Move">
+
+  <form name="moveForm" ng-hide="!currCol" name="move" ng-submit="checkCase() ">
+    <input id="directionInput" type="directions" required pattern="[(flr)(FLR)]*" ng-model="directions" />
+    <input id="directionsSubmit" type="submit" value="Move">
+    <p id="error"></p>
+
   </form>
 
 

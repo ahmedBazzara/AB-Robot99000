@@ -1,7 +1,7 @@
 (function () {
-
+// service to get the location of the pointer/robot
     var location = function () {
-
+// gets the current row the pointer/robot is at by swaping the matrix and look for the point where the robot is at
         var getCurrRow = function (array) {
 
             var currRow;
@@ -17,7 +17,7 @@
             }
             return currRow;
         };
-
+// gets the current collum the pointer/robot is at by swaping the matrix and look for the point where the robot is at
         var getCurrCol = function (array) {
             var currCol;
             for (var i = 0; i < array.length; ++i) {
@@ -31,7 +31,7 @@
             }
             return currCol;
         };
-
+// gets the current direction the pointer/robot is at by swaping the matrix and look for the point where the robot is at
         var getCurrDirection = function (array) {
             var currDir;
             for (var i = 0; i < arraylength; ++i) {
