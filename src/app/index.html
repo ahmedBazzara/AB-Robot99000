@@ -15,8 +15,6 @@
 
   <div>
     <h1>{{message}}</h1>
-
-
   </div>
 
   <form name="matrix" ng-submit="createMatrix(rows,cols,'0')">
@@ -35,9 +33,12 @@
     {{currCol}} {{currRow}} {{currDir}}</h6>
   <br>
 
-  <form name="moveForm" ng-hide="!currCol" name="move" ng-submit="checkCase() ">
+  <form name="moveForm" ng-hide="!currCol" name="move" ng-submit="checkCase() ">  
     <input id="directionInput" type="directions" required pattern="[(flr)(FLR)]*" ng-model="directions" />
     <input id="directionsSubmit" type="submit" value="Move">
+    <h4>Type R to rotate to the Right</h4>
+    <h4>Type L to rotate to the left</h4>
+    <h4>Type F to step forward</h4>  
     <p id="error"></p>
 
   </form>
