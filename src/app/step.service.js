@@ -11,7 +11,7 @@
             switch (currDir) {
                 case "S":
                     try {
-                        if (+currRow == 0) throw "Can't go more North!";
+                        if (+currRow == 0) throw "Can't go more South!";
                         newRow = +currRow - 1;
                         errMsg.innerHTML = "";                        
                         return newPointers = [+newRow, +currCol, currDir];
@@ -25,7 +25,7 @@
                     break;
                 case "N":
                     try {
-                        if (+currRow == array.length - 1) throw "Can't go more South!";
+                        if (+currRow == array.length - 1) throw "Can't go more North!";
                         newRow = +currRow + 1;
                         errMsg.innerHTML = "";                        
                         
