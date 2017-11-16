@@ -1,20 +1,49 @@
 <!doctype html>
-<html ng-app>
-  <head>
-    <script src="..\..\..\node_modules\angular\angular.min.js"></script>
-    
-    
-  </head>
-  <body>
-        <script src="main.js"></script>
-        
-      <div ></div>
-    <div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here"><br><br>
-      <hr>
-      <h1 id="demo" >Hello {{yourName}}!</h1>
-        
-    </div>
-  </body>
+<html ng-app="Robot99000">
+
+<head>
+  <script src="..\..\..\node_modules\angular\angular.min.js"></script>
+  <script src="main.js"></script>
+  <script src="rotate.service.js"></script>
+  <script src="location.service.js"></script>
+  <script src="step.service.js"></script>
+
+
+</head>
+
+<body ng-controller="MainController">
+
+  <div>
+    <h1>{{message}}</h1>
+  </div>
+
+  <form name="matrix" ng-submit="createMatrix(rows,cols,'0')">
+    <input type="create" required pattern="^[0-9]+$" placeholder="Rows" ng-model="rows" />
+    <input type="create" required pattern="^[0-9]+$" placeholder="Cols" ng-model="cols" />
+    <input type="submit" value="Creat Matrix">
+  </form>
+  <br>
+  <form ng-hide="!my2Darray" name="setStartPoint" ng-submit="setPointer(row,col,'N')">
+    <input type="Colpoint" required pattern="^[0-9]+$" placeholder="Col point Xx" ng-model="col" />
+
+    <input type="Rowpoint" required pattern="^[0-9]+$" placeholder="row point Ys" ng-model="row" />
+    <input type="submit" value="Set your start point">
+  </form>
+  <h6 ng-show="currRow ||currCol||currDir">
+    {{currCol}} {{currRow}} {{currDir}}</h6>
+  <br>
+
+  <form name="moveForm" ng-hide="!currCol" name="move" ng-submit="checkCase() ">  
+    <input id="directionInput" type="directions" required pattern="[(flr)(FLR)]*" ng-model="directions" />
+    <input id="directionsSubmit" type="submit" value="Move">
+    <h4>Type R to rotate to the Right</h4>
+    <h4>Type L to rotate to the left</h4>
+    <h4>Type F to step forward</h4>  
+    <p id="error"></p>
+
+  </form>
+
+
+</body>
+
 </html>
